@@ -6,21 +6,22 @@
 /*   By: tcimpean <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/28 23:04:25 by tcimpean          #+#    #+#             */
-/*   Updated: 2015/10/28 23:05:37 by tcimpean         ###   ########.fr       */
+/*   Updated: 2015/11/23 23:53:50 by tcimpean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
-int strcmp(const char *s1, const char *s2)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	int i;
+	size_t	l1;
+	size_t	l2;
+	int		k;
 
-	i = 0;
-	while (s1[i] != '\0' && s2[i] != '\0' && s1[i] == s2[i])
-		i++;
-	if (s1[i] == '\0' && s2[i] == '\0')
-		return (0);
-	else
-		return (s1[i] - s2[i]);
+	l1 = ft_strlen(s1) + 1;
+	l2 = ft_strlen(s2) + 1;
+	if (l2 < l1)
+		l1 = l2;
+	k = ft_memcmp(s1, s2, l1);
+	return (k);
 }

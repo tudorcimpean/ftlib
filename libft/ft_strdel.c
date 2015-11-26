@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcimpean <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/10/25 20:56:02 by tcimpean          #+#    #+#             */
-/*   Updated: 2015/10/25 20:58:19 by tcimpean         ###   ########.fr       */
+/*   Created: 2015/11/17 00:21:40 by tcimpean          #+#    #+#             */
+/*   Updated: 2015/11/22 23:31:09 by tcimpean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
+#include "libft.h"
 
-void *ft_memset(void *b, int c, size_t len);
-
-int main (void)
+void	ft_strdel(char **as)
 {
-	char str[50];
-
-	strcpy(str,"This is string.h library function");
-	puts(str);
-
-	ft_memset(str,'$',7);
-	puts(str);
-
-	return(0);
+	free(*as);
+	*as = 0;
 }

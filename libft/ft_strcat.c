@@ -6,14 +6,17 @@
 /*   By: tcimpean <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/08 20:26:06 by tcimpean          #+#    #+#             */
-/*   Updated: 2015/11/08 20:42:32 by tcimpean         ###   ########.fr       */
+/*   Updated: 2015/11/22 23:29:27 by tcimpean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 char	*ft_strcat(char *s1, const char *s2)
 {
 	int i;
 	int j;
+
 	i = 0;
 	while (s1[i] != '\0')
 		i++;

@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcimpean <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/07 21:40:30 by tcimpean          #+#    #+#             */
-/*   Updated: 2015/11/22 23:35:49 by tcimpean         ###   ########.fr       */
+/*   Created: 2015/11/17 21:21:50 by tcimpean          #+#    #+#             */
+/*   Updated: 2015/11/23 23:59:00 by tcimpean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *s1, const char *s2, size_t n)
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	size_t	len2;
+	char	*a;
+	size_t	i;
 
-	if (*s2 == '\0')
-		return ((char *)s1);
-	len2 = ft_strlen(s2);
-	while (*s1 != '\0' && n-- >= len2)
+	a = (char *)malloc(sizeof(char) * (len + 1));
+	if (a == 0)
+		return (0);
+	i = 0;
+	while (i < len)
 	{
-		if (*s1 == *s2 && ft_memcmp(s1, s2, len2) == 0)
-			return ((char *)s1);
-		s1++;
+		a[i] = s[start];
+		i++;
+		start++;
 	}
-	return (0);
+	return (a);
 }

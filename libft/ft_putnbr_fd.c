@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp_main.c                                  :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcimpean <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/10/28 22:46:17 by tcimpean          #+#    #+#             */
-/*   Updated: 2015/10/28 23:02:22 by tcimpean         ###   ########.fr       */
+/*   Created: 2015/11/17 23:19:47 by tcimpean          #+#    #+#             */
+/*   Updated: 2015/11/24 22:36:14 by tcimpean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
+#include "libft.h"
 
-int ft_strncmp(const char *s1, const char *s2, size_t n);
-
-int main() {
-	char string1[20];
-	char string2[20];
-
-	strcpy(string1, "abxdx");
-	strcpy(string2, "abaaa");
-	printf("Return Value is : %d\n", ft_strncmp( string1, string2, 4));
-
-	strcpy(string1, "abxdx");
-	strcpy(string2, "abaaa");
-	printf("Return Value is : %d\n", strncmp( string1, string2, 4));
-
-	return 0;
+void	ft_putnbr_fd(int n, int fd)
+{
+	ft_putstr_fd(ft_itoa(n), fd);
 }

@@ -1,29 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcimpean <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/07 21:40:30 by tcimpean          #+#    #+#             */
-/*   Updated: 2015/11/22 23:35:49 by tcimpean         ###   ########.fr       */
+/*   Created: 2015/11/25 02:07:29 by tcimpean          #+#    #+#             */
+/*   Updated: 2015/11/25 02:08:56 by tcimpean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *s1, const char *s2, size_t n)
+t_list	*ft_lstnew(void const *content, size_t content_size)
 {
-	size_t	len2;
+	t_list	*nod;
 
-	if (*s2 == '\0')
-		return ((char *)s1);
-	len2 = ft_strlen(s2);
-	while (*s1 != '\0' && n-- >= len2)
+	nod = (t_list *)malloc(sizeof(t_list));
+	if (nod == 0)
+		return (0);
+	if (content == 0)
 	{
-		if (*s1 == *s2 && ft_memcmp(s1, s2, len2) == 0)
-			return ((char *)s1);
-		s1++;
+		nod->content = 0;
+		nod->content_size = 0;
 	}
-	return (0);
+	else
+	{
+		nod->content = malloc(sizeof(content));
+		if (nod->content == 0)
+			return (0);
+		nod->content = (void*)content;
+		nod->content_size = content_size;
+	}
+	nod->next = 0;
+	return (nod);
 }

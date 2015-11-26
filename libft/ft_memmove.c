@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcimpean <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/07 21:40:30 by tcimpean          #+#    #+#             */
-/*   Updated: 2015/11/22 23:35:49 by tcimpean         ###   ########.fr       */
+/*   Created: 2015/11/16 20:59:09 by tcimpean          #+#    #+#             */
+/*   Updated: 2015/11/22 23:27:20 by tcimpean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *s1, const char *s2, size_t n)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	size_t	len2;
+	unsigned char	*str;
 
-	if (*s2 == '\0')
-		return ((char *)s1);
-	len2 = ft_strlen(s2);
-	while (*s1 != '\0' && n-- >= len2)
-	{
-		if (*s1 == *s2 && ft_memcmp(s1, s2, len2) == 0)
-			return ((char *)s1);
-		s1++;
-	}
-	return (0);
+	if (!dst || !src)
+		return (0);
+	str = (unsigned char*)malloc(sizeof(*str) * len);
+	ft_memcpy(str, src, len);
+	ft_memcpy(dst, str, len);
+	free(str);
+	return (dst);
 }

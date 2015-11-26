@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy_main.c                                   :+:      :+:    :+:   */
+/*   ft_putendl.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcimpean <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/10/26 22:35:49 by tcimpean          #+#    #+#             */
-/*   Updated: 2015/10/26 23:12:44 by tcimpean         ###   ########.fr       */
+/*   Created: 2015/11/17 22:58:34 by tcimpean          #+#    #+#             */
+/*   Updated: 2015/11/22 23:28:13 by tcimpean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
+#include "libft.h"
 
-void    *ft_memcpy(void *dst, const void *src, size_t n);
-void    *ft_memccpy(void *dst, const void *src,  int c, size_t n);
-
-int		main (void)
+void	ft_putendl(char const *s)
 {
-	char src[10] = "abcAdefgh";
-	char dest[10] = "123456789";
-
-	printf("Before memcpy dest = %s\n", dest);
-	memccpy(dest, src, 65, 6);
-	printf("After memcpy dest = %s\n", dest);
-
-	return(0);
+	ft_putstr(s);
+	ft_putchar('\n');
 }

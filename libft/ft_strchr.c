@@ -6,17 +6,20 @@
 /*   By: tcimpean <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/07 23:09:00 by tcimpean          #+#    #+#             */
-/*   Updated: 2015/11/07 23:10:57 by tcimpean         ###   ########.fr       */
+/*   Updated: 2015/11/23 22:24:32 by tcimpean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 char	*ft_strchr(const char *s, int c)
 {
 	int i;
 
-	while (s && *s != (char)c)
-		s++;
-	if (*s == (char)c)
-		return ((char *)s);
+	i = 0;
+	while (s[i] && s[i] != (char)c)
+		i++;
+	if (s[i] == (char)c)
+		return ((char *)&s[i]);
 	return (0);
 }
