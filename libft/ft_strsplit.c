@@ -3,98 +3,72 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcimpean <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: trad <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/17 22:05:06 by tcimpean          #+#    #+#             */
-/*   Updated: 2015/11/24 22:56:26 by tcimpean         ###   ########.fr       */
+/*   Created: 2015/11/17 22:03:30 by trad              #+#    #+#             */
+/*   Updated: 2015/11/28 21:11:34 by trad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_len(char const *s, char c)
+static int	ft_length(char const *s, char c)
 {
-	int	i;
-	int	len;
+	int		i;
+	int		k;
 
 	i = 0;
-	len = 0;
-	if (s[0] != c)
-		len++;
-	while (s[i + 1] != '\0')
+	k = 0;
+	while (*s)
 	{
-		if (s[i] == c && s[i + 1] != c)
-			len++;
-		i++;
+		if (k == 0 && *s != c)
+		{
+			k = 1;
+			i++;
+		}
+		else if (k == 1 && *s == c)
+			k = 0;
+		s++;
 	}
-	return (len);
+	return (i);
 }
 
-int		det_len(char const *s, char c, int poz)
+int			det_len(char const *s, char c)
 {
-	int	i;
+	int		i;
 
 	i = 0;
-	while (s[poz] != c && s[poz] != '\0')
+	while (*s != c && *s != '\0')
 	{
-		poz++;
+		s++;
 		i++;
 	}
 	return (i);
 }
 
-char	**string_form(char **a, const char *s, char c, int v[2])
+char		**ft_strsplit(char const *s, char c)
 {
-	int	k;
-	int	t;
-
-	while (s[v[0]] + 1 != '\0')
-		if (s[v[0]] == c && s[v[0] + 1] != c && s[v[0] + 1] != '\0')
-		{
-			while (s[v[0]] == c)
-				v[0]++;
-			k = det_len(s, c, v[0]);
-			a[v[1]] = (char *)malloc(sizeof(char) * k);
-			t = 0;
-			while (k > 0)
-			{
-				a[v[1]][t] = s[v[0]];
-				v[0]++;
-				k--;
-				t++;
-			}
-			a[v[1]][t] = '\0';
-			v[1]++;
-		}
-		else
-			v[0]++;
-	return (a);
-}
-
-char	**ft_strsplit(char const *s, char c)
-{
-	int		v[2];
-	int		k;
 	char	**a;
+	int		k;
+	int		i;
 
-	v[0] = ft_len(s, c);
-	if (s == 0)
+	if (!s)
 		return (0);
-	a = (char **)malloc(sizeof(char *) * v[0]);
-	v[1] = 0;
-	v[0] = 0;
-	if (s[v[0]] != c)
+	i = 0;
+	k = ft_length(s, c);
+	a = (char **)malloc(sizeof(char *) * (k + 1));
+	if (!a)
+		return (0);
+	while (k--)
 	{
-		k = det_len(s, c, 0);
-		a[v[1]] = (char *)malloc(sizeof(char) * k);
-		while (v[0] < k)
-		{
-			a[v[1]][v[0]] = s[v[0]];
-			v[0]++;
-		}
-		a[v[1]][v[0]] = '\0';
-		v[1]++;
+		while (*s == c && *s != '\0')
+			s++;
+		a[i] = ft_strsub(s, 0, det_len(s, c));
+		if (a[i] == 0)
+			return (0);
+		s = s + det_len(s, c);
+		i++;
 	}
-	a = string_form(a, s, c, v);
+	a[i] = 0;
 	return (a);
 }
